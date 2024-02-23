@@ -1,8 +1,7 @@
 import "@mantine/core/styles.css";
-import { MantineProvider } from "@mantine/core";
+import { MantineProvider, Container } from "@mantine/core";
 import { theme } from "./theme";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-// import { useEffect, useState } from "react";
 
 const gempa = [
   { id: 1, coordinates: {lat: 2.95, lng: 119.37}, location: "Mamasa" },
@@ -13,14 +12,10 @@ const gempa = [
 ];
 
 export default function App() {
-  // const [latLng, setLatLng] = useState([[51.505, -0.09]]);
-
-  // const addMap = () => {
-  //   setLatLng([...latLng, [39.312, -0.092]]);
-  // };
 
   return (
     <MantineProvider theme={theme}>
+      <Container mt="lg">
       <div id="map">
         <MapContainer
           center={[-4.281, 116.895]}
@@ -48,6 +43,7 @@ export default function App() {
           </p>
         </section>
       </div>
+      </Container>
     </MantineProvider>
   );
 }
