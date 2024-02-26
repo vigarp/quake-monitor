@@ -13,8 +13,9 @@ import {
 import { theme } from "./theme";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { useQuery } from "@tanstack/react-query";
-import { getFeltQuake } from "./store/slice";
+import { getFeltQuake } from "@/store/slice";
 import { useEffect, useState } from "react";
+import { manipulateQuakesData } from "@/helpers";
 
 export default function App() {
   const [allQuakesData, setaAllQuakesData] = useState<any[]>([]);
@@ -36,13 +37,6 @@ export default function App() {
       setAllQuakesMarker(quakes);
     }
   }, [quakesData, selectedRows]);
-
-  const manipulateQuakesData = (coordinates: any) => {
-    const [lat, lng] = coordinates
-      .split(",")
-      .map((coord: string) => parseFloat(coord));
-    return { lat, lng };
-  };
 
   useEffect(() => {
      const quakes = quakesData?.Infogempa?.gempa?.map((data: any) => ({
